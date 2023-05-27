@@ -71,8 +71,12 @@ import { useState } from "react";
     const submitHandler = (event) => {
       event.preventDefault();
       axios.post("http://localhost:3001/pokemons", form)
-      .then(res=>alert(res))
+      .then(res=>{
+        console.log(res.data);
+        return alert(res.data)
+      })
       .catch(err=>alert(err) )
+      
     }
     
     return(

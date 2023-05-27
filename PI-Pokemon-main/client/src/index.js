@@ -8,13 +8,15 @@ import { Provider } from 'react-redux';
 import store from "./redux/store";
 
 import { BrowserRouter } from "react-router-dom";
+import { Switch } from 'react-router-dom/cjs/react-router-dom.min';
 
 ReactDOM.render(
  
 <Provider store={store}>
     <BrowserRouter>
-
+    <Switch>
         <App />
+    </Switch>
 
     </BrowserRouter>
 </Provider>

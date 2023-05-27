@@ -10,10 +10,11 @@ const CarsContainer = () => {
 		<div className= {style.CarsContainer}>
        { arrayPokemons.map(poke=> {
             return <Cars
-            
-            image = {poke.image}
+            key = {poke.id}
+            id = {poke.id}
+            image = {poke.img}
             name= {poke.name}
-            //types= {poke.types}
+            types= {poke.types}
             
             />
 
