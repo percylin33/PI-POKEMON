@@ -9,6 +9,9 @@ const Cars = (props) => {
 
            <p>Name: {props.name}</p>
            <img src={props.image} alt= {`imagen de ${props.name} `}/>
+           <p>
+               Tipos: {props.types}
+           </p>
           </Link>
         </div>
     )
