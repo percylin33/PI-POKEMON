@@ -1,4 +1,4 @@
- import React, { useState } from "react";
+ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchPoke } from "../../redux/actions";
 
@@ -22,9 +22,7 @@ import { searchPoke } from "../../redux/actions";
       setSearchValue(event.target.value);
     };
 
-   /*  */
-
-
+    
    return (
      <div>
         <input type="search" value={searchValue} onChange={handleChange} onKeyDown={handleKeyPress} />

@@ -1,8 +1,11 @@
     import axios from "axios";
 
+
     export const GET_POKEMON = "GET_POKEMON"
     export const GET_POKEMONS = "GET_POKEMONS";
     export const ADD_CHARACTER = "ADD_CHARACTER";
+    export const SET_FILTERS ="SET_FILTERS";
+    export const SORT_POKEMON ="SORT_POKEMON";
 
     export  const getPokemons = () => {
         return async function (dispatch) {
@@ -30,7 +33,6 @@
     export const searchPoke =  (name) => {
 
         return async (dispatch) => {
-            console.log("hola search");
             try {
                 const response = await axios.get(`http://localhost:3001/pokemons?name=${name}`);
                 const [data] = response.data;
@@ -47,4 +49,34 @@
             }
         }
     }
-    export default {getPokemons , GET_POKEMONS, getPokemon ,GET_POKEMON, searchPoke, ADD_CHARACTER }
+
+    export const setFilters = (type, origin) => {
+        return (dispatch, getState) => {
+          const { pokemons } = getState();
+          let filteredPokemons = [];
+      
+          if (origin === "api") {
+            filteredPokemons = pokemons.filter((poke) =>
+              poke.type.includes(type)
+            );
+          }
+      
+          dispatch({
+            type: SET_FILTERS,
+            payload: filteredPokemons,
+          });
+        };
+      };
+
+      
+      // Acción para ordenar los pokemons
+   export const sortPoke = (option) => {
+     // Lógica para ordenar los pokemons según la opción seleccionada
+     // ...
+        // Retorna la acción con la opción de ordenamiento
+         return {
+          type: SORT_POKEMON,
+       payload: option
+     };
+      };
+    export default {getPokemons , GET_POKEMONS, getPokemon ,GET_POKEMON, searchPoke, ADD_CHARACTER, setFilters, SET_FILTERS, sortPoke,  SORT_POKEMON  }

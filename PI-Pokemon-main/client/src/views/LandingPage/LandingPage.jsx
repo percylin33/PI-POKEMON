@@ -1,7 +1,13 @@
+import imapica from "../../access/picachu.jpg";
+import style from "./LandingPage.module.css"
+import { useHistory } from 'react-router-dom';
+
 function LandingPage() {
+    const history = useHistory();
     return(
-        <div>
-        <h2>hola Landing</h2>
+        <div className={style.container}>
+         <img src={imapica} alt="" />
+         <button className={style.button} onClick={() => history.push('/home')}>INGRESA</button>
         </div>
     )
 }

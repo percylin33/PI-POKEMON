@@ -63,5 +63,4 @@ router.post("/", async (req, res) => {
   res.json({ info: "Pokemon creado" });
 });
 
-
 module.exports = router;
