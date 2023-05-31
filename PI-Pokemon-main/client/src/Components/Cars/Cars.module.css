@@ -4,30 +4,39 @@
     height: fit-content;
     border-radius: 10px;
 } */
-.car-container {
+.container {
     background-color: lightgray;
     padding: 10px;
+    border-radius: 4px;
   }
   
-  .car-title {
+  .carTitle {
     color: blue;
     font-size: 24px;
   }
   
-  .car-description {
+  .carDescription {
     font-style: italic;
+  }
+  .ima {
+    width: 11em;
+  
   }
   
   @media screen and (max-width: 768px) {
-    .car-container {
+    .container {
       padding: 5px;
     }
     
-    .car-title {
+    .carTitle {
       font-size: 20px;
     }
     
-    .car-description {
+    .carDescription {
       font-size: 14px;
+    }
+    .ima {
+      max-width: 8em;
+      min-width: 6em;
     }
   }

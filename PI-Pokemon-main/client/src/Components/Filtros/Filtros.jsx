@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { setFilters } from "../../redux/actions";
 
 const Filtros = ({ onFilter }) => {
   const [type, setType] = useState('');
@@ -37,8 +38,8 @@ const Filtros = ({ onFilter }) => {
       </select>
       <select value={origin} onChange={(e) => setOrigin(e.target.value)}>
         <option value="">All Origins</option>
-        <option value="api">API</option>
-        <option value="database">Database</option>
+        <option value="1">API</option>
+        <option value="2">Database</option>
         {/* Agrega más opciones de origen si es necesario */}
       </select>
       <button onClick={handleFilter}>Filter</button>

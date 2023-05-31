@@ -6,12 +6,100 @@
     align-items: center;
   }
   .button {
+    /* position: fixed;
+    top: 35em; */
+    border-radius: 20px;
     position: fixed;
-    top: 35em;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #00bfff;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  bottom: 2em;
   }
+  .button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.3) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.3) 75%, transparent 75%, transparent);
+    background-size: 50px 50px;
+    animation: electric 2s infinite linear;
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg) scale(0);
+    transition: opacity 0.5s, transform 0.5s;
+  }
+  
+  .button:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg) scale(1)
+  }
+  .button:hover {
+    background-color: #ff8c00;
+  }
+  
   
   .container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
+  .bienvenida {
+    border-radius: 10rem;
+    position: fixed;
+    top: 1em;
+    left: 2em;
+    backdrop-filter: blur(10px);
+    padding-left: 2em;
+    padding-right: 2em;
+    border: 1px solid rgb(121, 33, 41);
+  }
+  @media screen and (max-width: 600px) {
+    .bienvenida {
+      border-radius: 10rem;
+      position: fixed;
+      top: 1em;
+      left: 2em;
+      backdrop-filter: blur(10px);
+      padding-left: 2em;
+      padding-right: 2em;
+      border: 1px solid rgb(121, 33, 41);
+      font-size: xx-small;
+    }
+  
+
+  }
+  
+@keyframes button {
+  0% {
+    opacity: 0;
+  }
+   20% {
+    opacity: 0.6;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg) scale(0.5);
+  }
+  40% {
+    opacity: 0.4;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg) scale(1.2);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg) scale(0.8);
+  }
+  80% {
+    opacity: 0.2;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg) scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg) scale(0);
+  }
+}

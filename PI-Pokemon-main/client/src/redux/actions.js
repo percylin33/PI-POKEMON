@@ -39,7 +39,7 @@
             try {
                 const response = await axios.get(`http://localhost:3001/pokemons?name=${name}`);
                 const [data] = response.data;
-                console.log(data );
+                
         
                 if (data.name) {
                 dispatch({ type: ADD_CHARACTER, payload: data });
@@ -53,23 +53,18 @@
         }
     }
 
-    export const setFilters = (type, origin) => {
-        return async(dispatch, getState) => {
+    export const setFilters = ( payload) => {
+        // return async(dispatch, getState) => {
          
-          const { pokemons } = getState();
-          let filteredPokemons = [];
+        //   const { pokemons } = getState();
+        //   let filteredPokemons = [];
       
-          if (origin === "api") {
-            filteredPokemons = pokemons.filter((poke) =>
-              poke.type.includes(type)
-            );
-          }
-      
-          dispatch({
-            type: SET_FILTERS,
-            payload: filteredPokemons,
-          });
-        };
+        //   if (origin === "1") {
+        //     filteredPokemons = pokemons.filter((poke) =>
+        //       poke.type.includes(type)
+        //     );
+        //   }
+          return {type:SET_FILTERS. payload }
       };
 
       

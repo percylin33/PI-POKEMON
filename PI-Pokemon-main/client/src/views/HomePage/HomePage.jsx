@@ -9,6 +9,8 @@ import CarsContainer from "../../Components/CarsContainer/CarsContainer";
 import Order from "../../Components/Order/Order";
 import Pagination from "../../Components/Pagination/Pagination";
 
+import styled from "./HomePage.module.css";
+
 
 const HomePage = () => {
    const dispatch = useDispatch();
@@ -24,9 +26,9 @@ const HomePage = () => {
      dispatch(searchPoke(searchTerm));
    };
 
-   const handleFilter = (type, origin) => {
-     dispatch(setFilters(type, origin));
-   };
+  //  const handleFilter = (type, origin) => {
+  //    dispatch(setFilters(type, origin));
+  //  };
 
    const handleSort = (option) => {
      dispatch(sortPoke(option));
@@ -47,18 +49,21 @@ const HomePage = () => {
   };
 
   return (
-    <div>
-      {/*  */}
+    <div className={styled.conte}>
+  
+    <br />
       <SearchBar onSearch={handleSearch} />
-       <Filtros onFilter={handleFilter} />
+       {/* <Filtros onFilter={handleFilter} /> */}
       <Order onSort={handleSort} /> 
+    <br />
       <CarsContainer pokemons={currentCars} filters={filters} sorting={sorting} />
-    
-      <Pagination  
+    <br />
+       <Pagination   
         currentPage={currentPage}
         totalPages={totalPages}
         onPageChange={handlePageChange}
        />
+       <br />
     </div>
   );
 };

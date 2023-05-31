@@ -4,7 +4,10 @@ const initialState ={
     pokemons: [],
     pokemon: {},
     character:[],
-    types:[]
+    types:[],
+    filterPoke:[]
+
+
     
    
 }
@@ -12,7 +15,11 @@ const initialState ={
 const rootReducer = (state = initialState , action ) => {
     switch(action.type){
         case GET_POKEMONS:
-            return {...state, pokemons: action.payload}
+            return {
+                ...state, 
+                pokemons: action.payload,
+                filterPoke:action.payload
+             }
         case GET_POKEMON : 
             return {...state, pokemon: action.payload}
             
@@ -21,10 +28,14 @@ const rootReducer = (state = initialState , action ) => {
                  character:  [...state.character, action.payload]}    
 
         case SET_FILTERS:
+            console.log(filterPoke);
+            let pokemon = state.filterPoke
+            const pokemomnfinter = action.payload === "All" ? pokemon : pokemon.filter((e)=> e.pokemon === action.payload )
             return {
                   ...state,
-                  filteredPokemons: action.payload,
+                  pokemons: pokemomnfinter,
                 };
+
         case SORT_POKEMON:
                 // Lógica para ordenar los pokemons según la opción seleccionada
                 // ...

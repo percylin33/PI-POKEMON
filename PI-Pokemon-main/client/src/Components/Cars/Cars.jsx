@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 const Cars = (props) => {
   
     return (
-        <div className={ style.card} >
+        <div className={ style.container} >
 
-          <Link to={`/detail/${props.id}`}>
 
-           <p>Name: {props.name}</p>
-           <img src={props.image} alt= {`imagen de ${props.name} `}/>
-           <p>
+           <p className={style.carTitle}>{props.name}</p>
+            <Link to={`/detail/${props.id}`}>
+           <img className={style.ima} src={props.image} alt= {`imagen de ${props.name} `}/>
+          </Link> 
+           <p className={style.carDescription} >
                Tipos: {props.types}
            </p>
-          </Link>
         </div>
     )
 }

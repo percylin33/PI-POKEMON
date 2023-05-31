@@ -24,7 +24,7 @@ import { getTypes } from "../../redux/actions";
 
   },[arrayTypes])
 
-console.log(arrayTypes);
+
   useEffect(()=>{
     dispatch(getTypes())
 
@@ -44,6 +44,8 @@ console.log(arrayTypes);
         peso:"",
         tipos:[]
     })
+
+   
 
     const [errors, setErrors] = useState({
         name: "",
@@ -170,9 +172,9 @@ console.log(arrayTypes);
           <ul>
             {
               arrayTypes.map((ele)=>{
-                console.log(ele);
+             
                  const nombre= dataType.filter((el)=>el.id === Number(ele) ); 
-                 console.log(nombre);
+                
                  return <li key={nombre[0].id}> {nombre[0].type}</li>
               })
             }

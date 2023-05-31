@@ -2,10 +2,18 @@ const fetch = require("node-fetch");
 const { Pokemon, Tipo } = require("../db.js");
 
 const info = async (by) => {
-  const api = await fetch("https://pokeapi.co/api/v2/pokemon?limit=100");
+  const api = await fetch("https://pokeapi.co/api/v2/pokemon?limit=10");
   const data = await api.json();
-  const bd = await Pokemon.findAll({ include: Tipo });
-
+  const bd = await Pokemon.findAll(
+    { include:{
+      model: Tipo,
+      attributes: ["type"],
+      through:{
+        attributes:[],
+      }
+  
+    }  });
+console.log(bd);
   let base = [...bd, ...data.results];
 
   if (by === "2") {
@@ -25,8 +33,7 @@ const info = async (by) => {
         id: info.id,
         name: info.name,
         type: info.types.map((t) => t.type.name),
-        img: info.sprites.versions["generation-v"]["black-white"].animated
-          .front_default,
+        img: info.sprites.other.dream_world.front_default,
         fuerza: info.stats[1].base_stat,
       });
     } else {
@@ -38,10 +45,10 @@ const info = async (by) => {
         fuerza: base[i].fuerza,
         img: "https://media.giphy.com/media/DRfu7BT8ZK1uo/giphy.gif",
       });
-    }
-  }
-  // const poke = await Pokemon.findAll({ include: Tipo });
-  // pokemonInfo.push({ ...poke });
+    } 
+  }  
+   const poke = await Pokemon.findAll({ include: Tipo });
+   pokemonInfo.push({ ...poke });
   return pokemonInfo;
 };
 

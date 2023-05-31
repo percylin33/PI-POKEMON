@@ -1,0 +1,10 @@
+.conte {
+    position: absolute;
+    width: 100%;
+    min-height: 100vh;
+    background-image: url('../../access/Fondos.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
