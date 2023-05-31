@@ -1,9 +1,10 @@
-import { GET_POKEMONS, GET_POKEMON, ADD_CHARACTER } from "./actions";
+import { GET_POKEMONS, GET_POKEMON, ADD_CHARACTER, SET_FILTERS, SORT_POKEMON , GET_TYPES } from "./actions";
 
 const initialState ={
     pokemons: [],
     pokemon: {},
-    character:[]
+    character:[],
+    types:[]
     
    
 }
@@ -17,10 +18,28 @@ const rootReducer = (state = initialState , action ) => {
             
         case ADD_CHARACTER :
             return{...state,
-                 character:  [...state.character, action.payload]
-             
+                 character:  [...state.character, action.payload]}    
 
-            }    
+        case SET_FILTERS:
+            return {
+                  ...state,
+                  filteredPokemons: action.payload,
+                };
+        case SORT_POKEMON:
+                // Lógica para ordenar los pokemons según la opción seleccionada
+                // ...
+                // Retorna el estado actualizado con los pokemons ordenados
+            return {
+                  ...state,
+                  sortedPokemons: action.payload,
+                };
+
+        case GET_TYPES:
+
+        return{
+            ...state,
+            types: action.payload
+        }
 
     default:
         return{...state}

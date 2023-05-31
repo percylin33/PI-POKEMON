@@ -1,29 +1,60 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getTypes } from "../../redux/actions";
 
  function FormPage() {
+  const dispatch = useDispatch();
+  const dataType = useSelector((state)=> state.types )
+
+
+  const[arrayTypes, setArrayTypes]= useState([])
+  
+  const handlerSelect = (data) => {
+
+    if (!arrayTypes.includes(data)) {
+      setArrayTypes([...arrayTypes,data])
+    }
+   
+
+  }
+
+  useEffect(()=>{
+    setForm({...form, tipos: arrayTypes})
+
+  },[arrayTypes])
+
+console.log(arrayTypes);
+  useEffect(()=>{
+    dispatch(getTypes())
+
+  },[])
+
+
+
+
     const  [form,setForm] = useState({
         name: "",
-        image: "",
-        life:"",
-        attack:"",
-        defending:"",
-        speed:"",
-        height:"",
-        weight:"",
-        type:""
+        imagen: "",
+        vida:"",
+        fuerza:"",
+        defensa:"",
+        velocidad:"",
+        altura:"",
+        peso:"",
+        tipos:[]
     })
 
     const [errors, setErrors] = useState({
         name: "",
-        image: "",
-        life:"",
-        attack:"",
-        defending:"",
-        speed:"",
-        height:"",
-        weight:"",
-        type:""
+        imagen: "",
+        vida:"",
+        fuerza:"",
+        defensa:"",
+        velocidad:"",
+        altura:"",
+        peso:"",
+        tipos:""
 
     })
 
@@ -35,7 +66,7 @@ import { useState } from "react";
       validate({ ...form, [property]: value })
       // setform =({ ...form,[property]:value})
     }
-    //const 
+    
     
     const validate = (form) => {
 
@@ -54,18 +85,20 @@ import { useState } from "react";
         
       }
 
-      // if (typeof form.life === "string" && form.life.trim() !== "") {
-      //   if (regexNumeros.test(form.life)) {
-      //     setErrors({ ...errors,life: "Solo numeros"})
+      // if (typeof form.imagen === "string" && form.imagen.trim() !== "") {
+      //   if (regexLetras.test(form.imagen)) {
+      //     setErrors({ ...errors,imagen: "Solo letras"})
           
       //   } else {
-      //     setErrors({ ...errors,life: "Contiene caracteres no permitidos"})
+      //     setErrors({ ...errors,imagen: "Contiene caracteres no permitidos"})
           
       //   }
       // } else {
-      //   setErrors({ ...errors,life: "Campo esta necesario "})
+      //   setErrors({ ...errors,imagen: "Campo esta necesario "})
         
       // }
+
+
     }
 
     const submitHandler = (event) => {
@@ -73,7 +106,7 @@ import { useState } from "react";
       axios.post("http://localhost:3001/pokemons", form)
       .then(res=>{
         console.log(res.data);
-        return alert(res.data)
+        return alert(res.data.info)
       })
       .catch(err=>alert(err) )
       
@@ -83,55 +116,70 @@ import { useState } from "react";
         <form onSubmit={submitHandler} >
         <div>
             <label>Name: </label>
-            <input type="text" value={form.name} onChange={changeHanlder} name = "name" />
+            <input tipos="text" value={form.name} onChange={changeHanlder} name = "name" />
             {errors.name && <span>{errors.name}</span>}
         </div>
 
         <div>
           <label >Image: </label>
-          <input type="text" value={form.image} onChange={changeHanlder} name = "image" />
+          <input tipos="text" value={form.imagen} onChange={changeHanlder} name = "imagen" />
 
         </div>
         <div>
           <label >Life: </label>
-          <input type="text" value={form.life} onChange={changeHanlder} name = "life" />
-          {/* {errors.life && <span>{errors.life}</span>} */}
+          <input tipos="text" value={form.vida} onChange={changeHanlder} name = "vida" />
+          {/* {errors.vida && <span>{errors.vida}</span>} */}
 
         </div>
         <div>
           <label >Attack: </label>
-          <input type="text" value={form.attack} onChange={changeHanlder} name = "attack" />
+          <input tipos="text" value={form.fuerza} onChange={changeHanlder} name = "fuerza" />
 
         </div>
         <div>
           <label >Defending: </label>
-          <input type="text" value={form. defending} onChange={changeHanlder} name = "defending" />
+          <input tipos="text" value={form. defensa} onChange={changeHanlder} name = "defensa" />
 
         </div>
         <div>
           <label >Speed: </label>
-          <input type="text" value={form.speed} onChange={changeHanlder} name = "speed" />
+          <input tipos="text" value={form.velocidad} onChange={changeHanlder} name = "velocidad" />
 
         </div>
 
         <div>
           <label >Height: </label>
-          <input type="text" value={form.height} onChange={changeHanlder} name = "height" />
+          <input tipos="text" value={form.altura} onChange={changeHanlder} name = "altura" />
 
         </div>
 
         <div>
           <label >Weight: </label>
-          <input type="text" value={form.weight} onChange={changeHanlder} name = "weight" />
+          <input tipos="text" value={form.peso} onChange={changeHanlder} name = "peso" />
 
         </div>
 
         <div>
           <label >Type: </label>
-          <input type="text" value={form.type} onChange={changeHanlder} name = "type" />
+          <select name="tipos" onChange={(event)=>handlerSelect(event.target.value)} >
+            {
+              dataType.map((ele)=><option value={ele.id}>{ele.type}</option> )
+            }
+
+          </select>
+          <ul>
+            {
+              arrayTypes.map((ele)=>{
+                console.log(ele);
+                 const nombre= dataType.filter((el)=>el.id === Number(ele) ); 
+                 console.log(nombre);
+                 return <li key={nombre[0].id}> {nombre[0].type}</li>
+              })
+            }
+          </ul>
 
         </div>
-        <button type="submit" >SUBMIT</button>
+        <button tipos="submit" >SUBMIT</button>
         </form>
     )
 }

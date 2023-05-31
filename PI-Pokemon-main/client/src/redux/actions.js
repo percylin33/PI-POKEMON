@@ -6,10 +6,13 @@
     export const ADD_CHARACTER = "ADD_CHARACTER";
     export const SET_FILTERS ="SET_FILTERS";
     export const SORT_POKEMON ="SORT_POKEMON";
+    export const GET_TYPES = "GET_TYPES"
+
+    const url= "http://localhost:3001/";
 
     export  const getPokemons = () => {
         return async function (dispatch) {
-            const serverPoke  = await axios.get("http://localhost:3001/pokemons");
+            const serverPoke  = await axios.get(`${url}pokemons`);
 
             const pokemons = serverPoke.data
             
@@ -51,7 +54,8 @@
     }
 
     export const setFilters = (type, origin) => {
-        return (dispatch, getState) => {
+        return async(dispatch, getState) => {
+         
           const { pokemons } = getState();
           let filteredPokemons = [];
       
@@ -79,4 +83,24 @@
        payload: option
      };
       };
-    export default {getPokemons , GET_POKEMONS, getPokemon ,GET_POKEMON, searchPoke, ADD_CHARACTER, setFilters, SET_FILTERS, sortPoke,  SORT_POKEMON  }
+
+
+
+    export const getTypes = ()=>{
+        return async(dispatch)=>{
+            try {
+               const {data} = await axios.get("http://localhost:3001/types") 
+               return dispatch({
+                type: GET_TYPES,
+                payload: data,
+               })
+            } catch (error) {
+                console.log(error.message);
+                
+            }
+        }
+
+
+        
+    }
+

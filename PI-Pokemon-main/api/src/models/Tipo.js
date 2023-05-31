@@ -2,15 +2,16 @@ const { DataTypes, NUMBER } = require('sequelize');
 
 module.exports = sequelize => {
     sequelize.define('tipo', {
-        slot: {
+        id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
         },
-        name: {
+        type: {
             type: DataTypes.STRING,
             unique: true,
         }
-    });
+    },{timestamps: false,}
+    );
 }
 

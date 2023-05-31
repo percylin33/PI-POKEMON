@@ -11,9 +11,9 @@ const Order = ({ onSort }) => {
     <div>
       <select value={option} onChange={(e) => setOption(e.target.value)}>
         <option value="">No Sorting</option>
-        <option value="name"></option>
-        <option value="attack">Attack</option>
-        {/* Agrega más opciones de ordenamiento si es necesario */}
+        <option value="ascending">Ascending Alphabetically</option>
+        <option value="decending">Descending Alphabetically</option>
+       
       </select>
       <button onClick={handleSort}>Sort</button>
     </div>

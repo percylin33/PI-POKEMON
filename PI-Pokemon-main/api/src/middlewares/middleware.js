@@ -2,7 +2,7 @@ const fetch = require("node-fetch");
 const { Pokemon, Tipo } = require("../db.js");
 
 const info = async (by) => {
-  const api = await fetch("https://pokeapi.co/api/v2/pokemon?limit=40");
+  const api = await fetch("https://pokeapi.co/api/v2/pokemon?limit=100");
   const data = await api.json();
   const bd = await Pokemon.findAll({ include: Tipo });
 

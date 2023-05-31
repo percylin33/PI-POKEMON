@@ -30,15 +30,16 @@ router.get("/:id", async (req, res) => {
 
 
 router.post("/", async (req, res) => {
-  let { name, vida, fuerza, defensa, velocidad, altura, peso, tipos } =
+  let { name, vida, imagen , fuerza, defensa, velocidad, altura, peso, tipos } =
     req.body;
+    console.log(req.body);
   if (
-    isNaN(vida) ||
-    isNaN(fuerza) ||
-    isNaN(defensa) ||
-    isNaN(velocidad) ||
-    isNaN(altura) ||
-    isNaN(peso)
+    isNaN(Number(vida)) ||
+    isNaN(Number(fuerza)) ||
+    isNaN(Number(defensa)) ||
+    isNaN(Number(velocidad)) ||
+    isNaN(Number(altura)) ||
+    isNaN(Number(peso))
   )
     return res.json({ info: "Alguno de los argumentos no es un numero" });
 
@@ -50,6 +51,7 @@ router.post("/", async (req, res) => {
   const pokemon = await Pokemon.create({
     name: name.toLowerCase(),
     vida: Number(vida),
+    imagen: imagen,
     fuerza: Number(fuerza),
     defensa: Number(defensa),
     velocidad: Number(velocidad),
@@ -58,8 +60,8 @@ router.post("/", async (req, res) => {
   });
 
   if (!tipos || !tipos.length) tipos = [1];
-
-  await pokemon.setTipos(tipos);
+ 
+  await pokemon.addTipos(tipos);
   res.json({ info: "Pokemon creado" });
 });
 

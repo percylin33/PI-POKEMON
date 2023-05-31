@@ -8,9 +8,9 @@ router.get('/', async (req, res) => {
     const api = await fetch('https://pokeapi.co/api/v2/type');
     const types = await api.json();
     for( t of types.results ) {
-        const existe = await Tipo.findOne({where: { name: t.name }})
+        const existe = await Tipo.findOne({where: { type: t.name }})
         if(existe) return res.json(await Tipo.findAll())
-        await Tipo.create({ name: t.name})
+        await Tipo.create({ type: t.name})
     }
     res.json(await Tipo.findAll());
 })

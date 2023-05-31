@@ -17,17 +17,25 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    imagen: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     vida: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
     fuerza: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
     defensa: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
     velocidad: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
     altura: {
       type: DataTypes.DECIMAL
@@ -35,5 +43,9 @@ module.exports = (sequelize) => {
     peso: {
       type: DataTypes.DECIMAL
     }
-  });
+
+  },{timestamps: false,}
+  
+  );
+
 };
