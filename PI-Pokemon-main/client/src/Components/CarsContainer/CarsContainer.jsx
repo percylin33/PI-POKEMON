@@ -18,6 +18,7 @@ console.log(pokemons);
             name={pokemons.name}
             types={pokemons.type && pokemons.type.join(", ")}
           />
+          
         );
       })}
 

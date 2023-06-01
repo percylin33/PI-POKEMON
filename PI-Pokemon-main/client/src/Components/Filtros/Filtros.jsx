@@ -1,48 +1,39 @@
-import React, { useState } from 'react';
-import { setFilters } from "../../redux/actions";
+import React, { useEffect, useState } from 'react';
+import { setFilters, getTypes, getOrigin } from "../../redux/actions";
+import { useSelector, useDispatch } from 'react-redux';
+import style from "./Filtros.module.css";
 
-const Filtros = ({ onFilter }) => {
-  const [type, setType] = useState('');
-  const [origin, setOrigin] = useState('');
+const Filtros = () => {
+  
+  const dispatch = useDispatch()
 
-  const handleFilter = () => {
-    onFilter(type, origin);
-  };
+  const retypes= useSelector((state)=>state.types)
+
+  useEffect(()=>{
+
+     dispatch(getTypes())
+  },[])
+
+ 
 
   return (
     <div>
-      <select value={type} onChange={(e) => setType(e.target.value)}>
-        <option value="">All Types</option>
-        <option value="normal">Normal</option>
-        <option value="fighting">Fighting</option>
-        <option value="flying">Flying</option>
-        <option value="poison">Poison</option>
-        <option value="ground">Ground</option>
-        <option value="rock">Rock</option>
-        <option value="bug">Bug</option>
-        <option value="ghost">Ghost</option>
-        <option value="steel">Steel</option>
-        <option value="fire">Fire</option>
-        <option value="water">Water</option>
-        <option value="grass">Grass</option>
-        <option value="electric">Electric</option>
-        <option value="psychic">Psychic</option>
-        <option value="ice">Ice</option>
-        <option value="dragon">Dragon</option>
-        <option value="dark">Dark</option>
-        <option value="fairy">Fairy</option>
-        <option value="fighting">Unknown</option>
-        <option value="shadow">Shadow</option>
-    
-        {/* Agrega más opciones de tipo si es necesario */}
+      <select  className={style.select} onChange={(e) => dispatch( setFilters(e.target.value))}>
+        <option value="All">All Types</option>
+        {
+          retypes.map((e)=> <option className={style.option} key={e.id} value={e.type} >{e.type}</option>)
+        }
+        
+       
+       
       </select>
-      <select value={origin} onChange={(e) => setOrigin(e.target.value)}>
-        <option value="">All Origins</option>
-        <option value="1">API</option>
-        <option value="2">Database</option>
-        {/* Agrega más opciones de origen si es necesario */}
+      <select className={style.select} onChange={(e) => dispatch(getOrigin(e.target.value))}>
+        <option value="All">All Origins</option>
+        <option className={style.option} value="1">API</option>
+        <option className={style.option} value="2">Database</option>
+      
       </select>
-      <button onClick={handleFilter}>Filter</button>
+      
     </div>
   );
 };

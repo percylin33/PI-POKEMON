@@ -7,6 +7,7 @@
     export const SET_FILTERS ="SET_FILTERS";
     export const SORT_POKEMON ="SORT_POKEMON";
     export const GET_TYPES = "GET_TYPES"
+    export const GET_ORIGIN = "GET_ORIGIN"
 
     const url= "http://localhost:3001/";
 
@@ -24,7 +25,7 @@
     export const getPokemon = (id) =>{
         
         return async function (dispatch) {
-            const serverPoke = await axios.get(`http://localhost:3001/pokemons/${id}`);
+            const serverPoke = await axios.get(`${url}pokemons/${id}`);
             const pokemon = serverPoke.data;
     
             dispatch({
@@ -37,7 +38,7 @@
 
         return async (dispatch) => {
             try {
-                const response = await axios.get(`http://localhost:3001/pokemons?name=${name}`);
+                const response = await axios.get(`${url}pokemons?name=${name}`);
                 const [data] = response.data;
                 
         
@@ -54,25 +55,13 @@
     }
 
     export const setFilters = ( payload) => {
-        // return async(dispatch, getState) => {
-         
-        //   const { pokemons } = getState();
-        //   let filteredPokemons = [];
-      
-        //   if (origin === "1") {
-        //     filteredPokemons = pokemons.filter((poke) =>
-        //       poke.type.includes(type)
-        //     );
-        //   }
-          return {type:SET_FILTERS. payload }
+          return {type:SET_FILTERS, payload }
       };
 
       
-      // Acción para ordenar los pokemons
+      
    export const sortPoke = (option) => {
-     // Lógica para ordenar los pokemons según la opción seleccionada
-     // ...
-        // Retorna la acción con la opción de ordenamiento
+     
          return {
           type: SORT_POKEMON,
        payload: option
@@ -84,7 +73,7 @@
     export const getTypes = ()=>{
         return async(dispatch)=>{
             try {
-               const {data} = await axios.get("http://localhost:3001/types") 
+               const {data} = await axios.get(`${url}types`) 
                return dispatch({
                 type: GET_TYPES,
                 payload: data,
@@ -94,8 +83,14 @@
                 
             }
         }
+    } 
 
-
+    export const getOrigin = (option) => {
         
+        return {
+            type:GET_ORIGIN,
+            payload: option
+        }
+  
     }
 

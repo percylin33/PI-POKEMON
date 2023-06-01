@@ -14,7 +14,7 @@ import styled from "./HomePage.module.css";
 
 const HomePage = () => {
    const dispatch = useDispatch();
-   const pokemons = useSelector((state) => state.pokemons);
+   const pokemons = useSelector((state) => state.filterPoke);
    const filters = useSelector((state) => state.filters);
    const sorting = useSelector((state) => state.sorting);
 
@@ -53,7 +53,8 @@ const HomePage = () => {
   
     <br />
       <SearchBar onSearch={handleSearch} />
-       {/* <Filtros onFilter={handleFilter} /> */}
+       <Filtros  /> 
+       {/* onFilter={handleFilter} */}
       <Order onSort={handleSort} /> 
     <br />
       <CarsContainer pokemons={currentCars} filters={filters} sorting={sorting} />
