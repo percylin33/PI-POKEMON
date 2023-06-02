@@ -8,3 +8,31 @@
     background-repeat: no-repeat;
     z-index: -1;
 }
+.filOrIm {
+    display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  justify-content:space-evenly;
+}
+  
+.conetFIlOr {
+    display: flex;
+    justify-content: fle    x-end;
+    align-items: center;
+    margin-bottom: 10px;
+   
+  }
+  
+ 
+  .image {
+    justify-content: flex-start;
+    width: 150px; /* Ajusta el ancho de la imagen según tus necesidades */
+    height: auto; /* Ajusta la altura de la imagen según tus necesidades */
+    margin-left: 0px; /* Ajusta el margen izquierdo de la imagen según tus necesidades */
+  }
+    @media screen and (max-width: 400px) {
+      .conetFIlOr {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }

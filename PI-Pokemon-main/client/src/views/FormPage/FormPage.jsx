@@ -2,11 +2,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTypes } from "../../redux/actions";
+import style from "./FormPage.module.css";
 
  function FormPage() {
   const dispatch = useDispatch();
   const dataType = useSelector((state)=> state.types )
-
+  const url = "http://localhost:3001/"
 
   const[arrayTypes, setArrayTypes]= useState([])
   
@@ -72,7 +73,7 @@ import { getTypes } from "../../redux/actions";
     
     const validate = (form) => {
 
-      //const  regexNumeros = /^\d+$/;
+
       const regexLetras = /^[A-Za-z]+$/;
       if (typeof form.name === "string" && form.name.trim() !== "") {
         if (regexLetras.test(form.name)) {
@@ -105,9 +106,9 @@ import { getTypes } from "../../redux/actions";
 
     const submitHandler = (event) => {
       event.preventDefault();
-      axios.post("http://localhost:3001/pokemons", form)
+      axios.post(`${url}pokemons`, form)
       .then(res=>{
-        console.log(res.data);
+        
         return alert(res.data.info)
       })
       .catch(err=>alert(err) )
@@ -115,60 +116,61 @@ import { getTypes } from "../../redux/actions";
     }
     
     return(
-        <form onSubmit={submitHandler} >
+        <div className={style.conte}>
+        <form className={style.form} onSubmit={submitHandler} >
         <div>
-            <label>Name: </label>
-            <input tipos="text" value={form.name} onChange={changeHanlder} name = "name" />
+            <label className={style.label} >Name: </label>
+            <input  className={style.impu} tipos="text" value={form.name} onChange={changeHanlder} name = "name" />
             {errors.name && <span>{errors.name}</span>}
         </div>
 
         <div>
-          <label >Image: </label>
-          <input tipos="text" value={form.imagen} onChange={changeHanlder} name = "imagen" />
+          <label className={style.label} >Image: </label>
+          <input className={style.impu} tipos="text" value={form.imagen} onChange={changeHanlder} name = "imagen" />
 
         </div>
         <div>
-          <label >Life: </label>
-          <input tipos="text" value={form.vida} onChange={changeHanlder} name = "vida" />
-          {/* {errors.vida && <span>{errors.vida}</span>} */}
+          <label className={style.label} >Life: </label>
+          <input className={style.impu} tipos="text" value={form.vida} onChange={changeHanlder} name = "vida" />
+   
 
         </div>
         <div>
-          <label >Attack: </label>
-          <input tipos="text" value={form.fuerza} onChange={changeHanlder} name = "fuerza" />
+          <label className={style.label} >Attack: </label>
+          <input className={style.impu} tipos="text" value={form.fuerza} onChange={changeHanlder} name = "fuerza" />
 
         </div>
         <div>
-          <label >Defending: </label>
-          <input tipos="text" value={form. defensa} onChange={changeHanlder} name = "defensa" />
+          <label className={style.label} >Defending: </label>
+          <input className={style.impu} tipos="text" value={form. defensa} onChange={changeHanlder} name = "defensa" />
 
         </div>
         <div>
-          <label >Speed: </label>
-          <input tipos="text" value={form.velocidad} onChange={changeHanlder} name = "velocidad" />
-
-        </div>
-
-        <div>
-          <label >Height: </label>
-          <input tipos="text" value={form.altura} onChange={changeHanlder} name = "altura" />
+          <label className={style.label} >Speed: </label>
+          <input className={style.impu} tipos="text" value={form.velocidad} onChange={changeHanlder} name = "velocidad" />
 
         </div>
 
         <div>
-          <label >Weight: </label>
-          <input tipos="text" value={form.peso} onChange={changeHanlder} name = "peso" />
+          <label className={style.label} >Height: </label>
+          <input className={style.impu} tipos="text" value={form.altura} onChange={changeHanlder} name = "altura" />
 
         </div>
 
         <div>
-          <label >Type: </label>
+          <label className={style.label} >Weight: </label>
+          <input className={style.impu} tipos="text" value={form.peso} onChange={changeHanlder} name = "peso" />
+
+        </div>
+
+        <div>
+          <label className={style.label} >Type: </label>
           <select name="tipos" onChange={(event)=>handlerSelect(event.target.value)} >
             {
-              dataType.map((ele)=><option value={ele.id}>{ele.type}</option> )
+              dataType.map((ele)=><option key={ele.id} value={ele.id}>{ele.type}</option> )
             }
 
-          </select>
+          </select >
           <ul>
             {
               arrayTypes.map((ele)=>{
@@ -181,8 +183,9 @@ import { getTypes } from "../../redux/actions";
           </ul>
 
         </div>
-        <button tipos="submit" >SUBMIT</button>
+        <button  className={style.boton} tipos="submit" >SUBMIT</button>
         </form>
+        </div>
     )
 }
 export default FormPage;

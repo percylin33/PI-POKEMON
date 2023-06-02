@@ -10,8 +10,8 @@ router.get("/", async (req, res) => {
   if (name) {
     name = name.toLowerCase();
     pokemonInfo = await forName(name);
-    if (!pokemonInfo.length)
-      return res.json({ info: "No se encontro el pokemon" });
+
+     
     return res.json(pokemonInfo);
   }
 

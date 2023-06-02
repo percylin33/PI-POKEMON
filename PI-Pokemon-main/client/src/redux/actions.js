@@ -39,15 +39,10 @@
         return async (dispatch) => {
             try {
                 const response = await axios.get(`${url}pokemons?name=${name}`);
-                const [data] = response.data;
+                const data = response.data;
                 
-        
-                if (data.name) {
-                dispatch({ type: ADD_CHARACTER, payload: data });
-                } else {
-                alert("Personaje no encontrado");
-                }
-                
+               return dispatch({ type: ADD_CHARACTER, payload: data });
+             
             } catch (error) {
                 alert("Error al obtener el personaje");
             }

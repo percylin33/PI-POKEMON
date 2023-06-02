@@ -5,7 +5,7 @@ import Cars from "../Cars/Cars";
 
 
 const CarsContainer = ({pokemons}) => {
-console.log(pokemons);
+
   return (
     <div className={style.CarsContainer}>
       

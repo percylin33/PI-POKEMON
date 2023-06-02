@@ -28,7 +28,7 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, pokemon: action.payload };
 
     case ADD_CHARACTER:
-      return { ...state, character: [...state.character, action.payload] };
+      return { ...state, filterPoke: action.payload };
 
     case SET_FILTERS:
       let poke = state.pokemons;

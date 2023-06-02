@@ -2,7 +2,7 @@ const fetch = require("node-fetch");
 const { Pokemon, Tipo } = require("../db.js");
 
 const info = async (by) => {
-  const api = await fetch("https://pokeapi.co/api/v2/pokemon?limit=50");
+  const api = await fetch("https://pokeapi.co/api/v2/pokemon?limit=30");
   const data = await api.json();
   const bd = await Pokemon.findAll(
     { include:{
@@ -13,8 +13,20 @@ const info = async (by) => {
       }
   
     }  });
+    const bd2= bd.map((ele)=>{
+      const tiposs=  ele.tipos.map((el)=> el.type);
+      console.log(tiposs);
+      return{
+        id: ele.id,
+        idPoke: ele.idpoke,
+        name: ele.name,
+        type: tiposs,
+        img: ele.img
 
-  let base = [...bd, ...data.results];
+      }
+    })
+
+  let base = [...bd2, ...data.results];
 
   if (by === "2") {
     base = [...bd];
@@ -41,7 +53,7 @@ const info = async (by) => {
         id: base[i].id,
         idPoke: base[i].idPoke,
         name: base[i].name,
-        type: base[i].tipos.map((t) => t.name),
+        type: base[i].type,
         fuerza: base[i].fuerza,
         img: "https://media.giphy.com/media/DRfu7BT8ZK1uo/giphy.gif",
       });
@@ -58,15 +70,22 @@ const forName = async (name) => {
       where: {
         name: name,
       },
-      include: Tipo,
+      include: {
+        model: Tipo, 
+        attributes: ["type"],
+        through: {
+          attributes:[]
+        }
+      }
     });
     if (db) {
+      console.log(db);
       const pokemonDb = [
         {
           id: db.id,
           idPoke: db.idPoke,
           name: db.name,
-          type: db.tipos.map((t) => t.name),
+          type: db.tipos.map((ele)=> ele.type),
           img: "https://media.giphy.com/media/DRfu7BT8ZK1uo/giphy.gif",
         },
       ];
