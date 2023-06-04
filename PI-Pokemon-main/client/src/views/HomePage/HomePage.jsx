@@ -1,7 +1,7 @@
  import  { useEffect, useState } from "react";
  import { useDispatch,useSelector } from "react-redux";
 
-import { getPokemons, setFilters , sortPoke, searchPoke} from '../../redux/actions';
+import { getPokemons} from '../../redux/actions';
 
 import Filtros from "../../Components/Filtros/Filtros";
 
@@ -11,6 +11,7 @@ import Pagination from "../../Components/Pagination/Pagination";
 
 import styled from "./HomePage.module.css";
 import ima from "../../access/pngegg.png";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
    const dispatch = useDispatch();
@@ -41,7 +42,9 @@ const HomePage = () => {
   return (
     <div className={styled.conte}>
     <div className={styled.filOrIm}>
+      <Link to={"/"}>
         <img className={styled.image}  src={ima} alt="Logo pokemon" />
+      </Link>
     <div className={styled.conetFIlOr}>
     
        <Filtros  /> 

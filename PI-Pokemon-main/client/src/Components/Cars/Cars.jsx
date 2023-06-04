@@ -11,7 +11,7 @@ const Cars = (props) => {
            <img className={style.ima} src={props.image} alt= {`imagen de ${props.name} `}/>
           </Link> 
            <p className={style.carDescription} >
-               Tipos: {props.types}
+               Types: {props.types}
            </p>
         </div>
     )

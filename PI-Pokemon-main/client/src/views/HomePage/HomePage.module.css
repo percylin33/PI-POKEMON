@@ -13,11 +13,13 @@
   align-items: center;
   margin-bottom: 10px;
   justify-content:space-evenly;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
   
 .conetFIlOr {
     display: flex;
-    justify-content: fle    x-end;
+    justify-content: flex-end;
     align-items: center;
     margin-bottom: 10px;
    

@@ -7,14 +7,14 @@ function LandingPage() {
     return(
         <div className={style.container}>
             <video className="video-background" autoPlay muted loop>
-    <source src={video} type="video/mp4" />
-    Tu navegador no admite la reproducción de videos.
+          <source src={video} type="video/mp4" />
+   
   </video>
             <div className={style.bienvenida}>
-                <h1>Bienvenidos al PI POKEMON</h1>
+                <h1 className={style.h1}>Welcome to the POKEMON PI</h1>
             </div>
         
-         <button className={style.button} onClick={() => history.push('/home')}>INGRESA</button>
+         <button className={style.button} onClick={() => history.push('/home')}>GET INTO</button>
         </div>
     )
 }

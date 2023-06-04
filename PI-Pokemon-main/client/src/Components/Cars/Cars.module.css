@@ -1,9 +1,7 @@
-/* .card {
-    border: 1px solid black;
-    width: fit-content;
-    height: fit-content;
-    border-radius: 10px;
-} */
+@font-face {
+  font-family: "rennerprivat2";
+  src: url("../../access/fonts/rennerprivat2.ttf") format("truetype");
+}
 .container {
     background-color: lightgray;
     padding: 10px;
@@ -11,8 +9,12 @@
   }
   
   .carTitle {
-    color: blue;
-    font-size: 24px;
+    color: currentColor;
+    font-size: 3rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+   
+    font-family: "rennerprivat2", cursive;
   }
   
   .carDescription {

@@ -5,7 +5,7 @@ const info = async (by) => {
   const api = await fetch("https://pokeapi.co/api/v2/pokemon?limit=30");
   const data = await api.json();
   const bd = await Pokemon.findAll(
-    { include:{
+    { include:{ 
       model: Tipo,
       attributes: ["type"],
       through:{

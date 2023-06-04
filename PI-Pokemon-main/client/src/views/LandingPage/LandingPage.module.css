@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "mendello demo";
+  src: url("../../access/fonts/mendello-demo.ttf") format("truetype");
+}
 .container {
   width: 100%;
   height: 100vh;
@@ -11,9 +15,14 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vh;
   height: 100%;
   object-fit: cover;
+}
+.h1 {
+  color: unset;
+  font-size: 1.5rem;
+  font-family: "mendello demo", cursive;
 }
 
   .button {
@@ -71,7 +80,7 @@
     backdrop-filter: blur(10px);
     padding-left: 2em;
     padding-right: 2em;
-    border: 1px solid rgb(121, 33, 41);
+   
   }
   @media screen and (max-width: 600px) {
     .bienvenida {
