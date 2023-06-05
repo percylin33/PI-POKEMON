@@ -3,8 +3,8 @@ import React from "react";
 import style from "./CarsContainer.module.css";
 import Cars from "../Cars/Cars";
 
-
 const CarsContainer = ({pokemons}) => {
+  console.log(pokemons);
 
   return (
     <div className={style.CarsContainer}>

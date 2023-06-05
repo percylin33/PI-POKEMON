@@ -6,7 +6,14 @@
 }
 
 .container {
-  position: relative;
+  position: absolute;
+  width: 100%;
+  min-height: 100vh;
+  background-image: url('../../access/fondo-detail.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
 }
 
 .detailConte {
@@ -15,6 +22,7 @@
   align-items: flex-start;
   margin-top: 20px;
   margin-bottom: 20px;
+  background-color: darkcyan;
 }
 
 .display {
@@ -24,16 +32,29 @@
   margin-right: 60px;
 }
 
-.logoPokemon {
-  width: 150px;
+.icono {
+  width: 2rem;
+  height: 2rem;
+}
+
+.altavoz {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.pokebola {
+  width: 250px;
   margin-left: 80px;
 }
 
 .rod {
   height: 90px;
-  width: 170px;
+  width: 200px;
   margin-right: 180px;
   margin-top: 20px;
+}
+.poke {
+  width: 300px;
 }
 
 .lastOne {

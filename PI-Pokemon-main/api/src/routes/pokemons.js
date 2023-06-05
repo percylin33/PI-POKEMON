@@ -18,6 +18,7 @@ router.get("/", async (req, res) => {
   pokemonInfo = await info(by);
   if (!pokemonInfo.length) return res.json({ info: "No hay mas registros" });
 
+
   res.json(pokemonInfo);
 });
 
@@ -32,7 +33,7 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   let { name, vida, imagen , fuerza, defensa, velocidad, altura, peso, tipos } =
     req.body;
-    console.log(req.body);
+   
   if (
     isNaN(Number(vida)) ||
     isNaN(Number(fuerza)) ||

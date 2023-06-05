@@ -17,6 +17,14 @@ import blastoise from "../../access/audio/blastoise.mp3";
 import butterfree from "../../access/audio/butterfree.mp3";
 import atras from "../../access/atras.png";
 import { Link } from "react-router-dom";
+import pokebola from "../../access/pokebola.png";
+import vida   from "../../access/iconos/vida.png";
+import altura   from "../../access/iconos/altura.png";
+import ataque   from "../../access/iconos/ataque.png";
+import defenza   from "../../access/iconos/defenza.png";
+import peso   from "../../access/iconos/peso.png";
+import velocidad   from "../../access/iconos/velocida.png";
+import altavoz from "../../access/iconos/altavoz.png";
 
 const DetailPage = () => {
   const dispatch = useDispatch();
@@ -92,6 +100,7 @@ const DetailPage = () => {
       audioPlayerRef.current = null;
     };
   }, [audioFile]);
+  console.log(detailPoke.defenza);
   return (
 <div className={styles.container}>
   <Link to={"/home"}>
@@ -100,38 +109,30 @@ const DetailPage = () => {
   <div className={styles.detailConte}>
     <div className={styles.display}>
       <img
-        className={styles.logoPokemon}
-        src="https://cdn.discordapp.com/attachments/824092983099261029/824110721263730688/Pokemon-Logo.png"
-        alt="Logo de Pokemon"
+        className={styles.pokebola}
+        src={pokebola}
+        alt="Pokebola"
       />
     </div>
     <div className={styles.rod}>
-      <img src={detailPoke.img} alt="imgPoke" />
+      <img className={styles.poke} src={detailPoke.img} alt="imgPoke" />
       <button className={styles.lastOne} id="resultado" onClick={handleClick}>
-        DESCRIPTION
+        DESCRIPTION  <img className={styles.altavoz} src={altavoz} alt="altavoz" />
       </button>
     </div>
+    
     <div className={styles.secondD}>
-      <p><strong>Id:</strong> {detailPoke.id}</p>
+      <p><strong>Id:</strong> {detailPoke.id} </p>
       <p><strong>Name:</strong> {detailPoke.name}</p>
-      <p><strong>Life:</strong> {detailPoke.vida}</p>
-      <p><strong>Attack:</strong> {detailPoke.fuerza}</p>
-      <p><strong>Defending:</strong> {detailPoke.defenza}</p>
-      <p><strong>speed:</strong> {detailPoke.velocidad}</p>
-      <p><strong>Altura:</strong> {detailPoke.height}</p>
-      <p><strong>Peso:</strong> {detailPoke.weight}</p>
+      <p> <img className={styles.icono} src={vida} alt="vida" /> <strong> Life:</strong> {detailPoke.vida}</p>
+      <p> <img className={styles.icono} src={ataque} alt="ataque" /><strong> Attack:</strong> {detailPoke.fuerza}</p>
+      <p> <img className={styles.icono} src={defenza} alt="defenza" /><strong> Defending:</strong> {detailPoke.defensa}</p>
+      <p> <img className={styles.icono} src={velocidad} alt="velocidad" /><strong> speed:</strong> {detailPoke.velocidad}</p>
+      <p> <img className={styles.icono} src={altura} alt="altura" /><strong> height:</strong> {detailPoke.height}</p>
+      <p> <img className={styles.icono} src={peso} alt="peso" /><strong> weight:</strong> {detailPoke.weight}</p>
       <p><strong>Types:</strong> {detailPoke.type && detailPoke.type.join(", ")}</p>      
       
      
-    </div>
-    <div className={styles.twt}>
-      <ul id="pokemonsSuportados">
-        <li className={styles.listPokemon}>Pikachu</li>
-        <li className={styles.listPokemon}>Squirtle</li>
-        <li className={styles.listPokemon}>Charmander</li>
-        <li className={styles.listPokemon}>Ratata</li>
-        <li className={styles.listPokemon}>Bulbasaur</li>
-      </ul>
     </div>
 
   </div>

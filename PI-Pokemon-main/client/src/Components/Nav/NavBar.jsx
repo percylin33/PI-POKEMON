@@ -13,6 +13,9 @@ const NavBar = () => {
           <li className={style.navItem}>
             <Link to="/form" className={style.navLink}>FORM</Link>
           </li>
+          <li className={style.navItem}>
+            <Link to="/about" className={style.navLink}>ABOUT</Link>
+          </li>
         </ul>
         <SearchBar />
       </nav>

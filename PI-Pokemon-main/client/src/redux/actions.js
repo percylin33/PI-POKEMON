@@ -16,7 +16,7 @@
             const serverPoke  = await axios.get(`${url}pokemons`);
 
             const pokemons = serverPoke.data
-            
+            console.log(pokemons);
             dispatch({
                 type: GET_POKEMONS, payload: pokemons
             })
