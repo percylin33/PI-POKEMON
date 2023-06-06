@@ -5,19 +5,17 @@ const { info, forName, forId } = require("../middlewares/middleware.js");
 const router = Router();
 
 router.get("/", async (req, res) => {
-  let { name, by } = req.query;
+  let { name } = req.query;
   let pokemonInfo = [];
   if (name) {
     name = name.toLowerCase();
     pokemonInfo = await forName(name);
 
-     
     return res.json(pokemonInfo);
   }
 
-  pokemonInfo = await info(by);
+  pokemonInfo = await info();
   if (!pokemonInfo.length) return res.json({ info: "No hay mas registros" });
-
 
   res.json(pokemonInfo);
 });
@@ -31,9 +29,9 @@ router.get("/:id", async (req, res) => {
 
 
 router.post("/", async (req, res) => {
-  let { name, vida, imagen , fuerza, defensa, velocidad, altura, peso, tipos } =
+  let { name, vida, imagen, fuerza, defensa, velocidad, altura, peso, tipos } =
     req.body;
-   
+
   if (
     isNaN(Number(vida)) ||
     isNaN(Number(fuerza)) ||
@@ -44,7 +42,8 @@ router.post("/", async (req, res) => {
   )
     return res.json({ info: "Alguno de los argumentos no es un numero" });
 
-  if (!name) return res.json({ info: "El nombre es obligatorio" });
+  if (!name || !vida || !fuerza || !defensa || !velocidad ) return res.json({ info: "Campo obligatorio faltante " });
+
 
   const existe = await Pokemon.findOne({ where: { name: name } });
   if (existe) return res.json({ info: "El pokemon ya existe" });
@@ -61,7 +60,7 @@ router.post("/", async (req, res) => {
   });
 
   if (!tipos || !tipos.length) tipos = [1];
- 
+
   await pokemon.addTipos(tipos);
   res.json({ info: "Pokemon creado" });
 });

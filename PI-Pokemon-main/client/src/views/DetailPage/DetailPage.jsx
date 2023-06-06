@@ -4,6 +4,7 @@ import { getPokemon } from "../../redux/actions";
 import { useParams } from "react-router-dom";
 import styles from "./DetailPage.module.css";
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 import precentacion from "../../access/audio/precentacion.mp3";
 import charizard from "../../access/audio/charizard.mp3";
 import charmander from "../../access/audio/charmander.mp3";
@@ -16,7 +17,6 @@ import bulbasaur from "../../access/audio/bulbasaur.mp3";
 import blastoise from "../../access/audio/blastoise.mp3";
 import butterfree from "../../access/audio/butterfree.mp3";
 import atras from "../../access/atras.png";
-import { Link } from "react-router-dom";
 import pokebola from "../../access/pokebola.png";
 import vida   from "../../access/iconos/vida.png";
 import altura   from "../../access/iconos/altura.png";
@@ -59,7 +59,6 @@ const DetailPage = () => {
     }
   }, [userInteracted, isPlaying]);
 
-  console.log(detailPoke);
   useEffect(() => {
     if (detailPoke && detailPoke.name) {
       let newAudioFile = precentacion; // Valor predeterminado
@@ -100,7 +99,7 @@ const DetailPage = () => {
       audioPlayerRef.current = null;
     };
   }, [audioFile]);
-  console.log(detailPoke.defenza);
+  
   return (
 <div className={styles.container}>
   <Link to={"/home"}>

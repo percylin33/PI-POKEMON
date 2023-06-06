@@ -26,7 +26,7 @@
     width: 400px;
     padding-bottom: 40px;
     margin-top: 60px;
-    min-height: 780px;
+    min-height: 900px;
   }
   .h2{
     color: crimson;
@@ -42,11 +42,16 @@
     justify-content: center
     }
   .label {
+    
+    color: #140a10;
     font-weight: bold;
-    color: #140a10; 
+    margin-bottom: 10px; 
   }
   .type{
     margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   .impu {
@@ -64,7 +69,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
+   
   }
   
   .error-message {
@@ -76,6 +81,14 @@
     list-style-type: none;
     margin: 10px 0;
     padding: 0;
+  }
+
+  .select {
+    /* Estilos para el select */
+    /* Ejemplo de estilos: */
+    padding: 5px;
+    border: 1px solid gray;
+    border-radius: 4px;
   }
   
   .selected-types li {
@@ -95,3 +108,22 @@
   .boton:active {
     background-color: #FFA500; /* Naranja */
   }
+  .select:focus {
+    /* Estilos para el select cuando está en foco */
+    /* Ejemplo de estilos: */
+    outline: none;
+    box-shadow: 0 0 5px blue;
+  }
+  
+.ul {
+  /* Estilos para la lista ul */
+  /* Ejemplo de estilos: */
+  list-style: none;
+}
+.ul li {
+  /* Estilos para los elementos li dentro de ul */
+  /* Ejemplo de estilos: */
+  padding: 5px;
+  background-color: lightgray;
+  margin-bottom: 5px;
+}

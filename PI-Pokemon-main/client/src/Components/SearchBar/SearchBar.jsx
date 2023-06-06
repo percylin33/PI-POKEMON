@@ -1,6 +1,7 @@
  import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchPoke } from "../../redux/actions";
+import style from "./SearchBar.module.css";
 
 
  const SearchBar = () => {
@@ -25,8 +26,8 @@ import { searchPoke } from "../../redux/actions";
     
    return (
      <div>
-        <input type="search" value={searchValue} onChange={handleChange} onKeyDown={handleKeyPress} />
-       <button onClick={onSearch}>Agregar</button>
+        <input className={style.in} type="search" value={searchValue} onChange={handleChange} onKeyDown={handleKeyPress} />
+       <button className={style.bt} onClick={onSearch}>ADD</button>
     
 
      </div>

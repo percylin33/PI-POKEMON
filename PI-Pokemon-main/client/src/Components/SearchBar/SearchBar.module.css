@@ -1,0 +1,42 @@
+.in {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .bt {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .bt:hover {
+    background-color: #0056b3;
+  }
+/* 
+  @media screen and (max-width: 600px) {
+    .in {
+      font-size: 14px;
+    }
+    
+    .bt {
+      font-size: 14px;
+    }
+  } */
+  
+  /* Estilos para pantallas de hasta 400px */
+  @media screen and (max-width: 450px) {
+    .in {
+      font-size: 5px;
+    }
+    
+    .bt {
+      font-size: 11px;
+      padding: 8px 16px;
+    }
+  }

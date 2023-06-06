@@ -8,3 +8,26 @@
     background-repeat: no-repeat;
     z-index: -1;
   }
+  .pCon {
+    width: 50%;
+    /* background-color: floralwhite; */
+    color: bisque;
+    margin-left: 50px;
+
+  }
+  .per {
+    border-radius: 10px;
+    margin-top: 15px;
+    width: 40%;
+  }
+
+  .img {
+      width: 4rem;
+      height: 4rem;
+  }
+  .ordenado {
+    white-space: pre-line;
+  }
+  .i {
+    margin-top: 20px
+  }

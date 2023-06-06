@@ -234,24 +234,22 @@ function FormPage() {
           <select
             name="tipos"
             onChange={(event) => handlerSelect(event.target.value)}
+             className={style.select}
           >
-            {dataType.map((ele) => (
-              <option key={ele.id} value={ele.id}>
+            {dataType.map((ele) => (          
+               <option key={ele.id} value={ele.id}>
                 {ele.type}
-              </option>
+               </option>
             ))}
-          </select>
-          <ul>
-  {
-    arrayTypes.map((ele)=>{
-   
-       const nombre= dataType.filter((el)=>el.id === Number(ele) ); 
-      
-       return <li key={nombre[0].id}> {nombre[0].type}</li>
-    })
-  }
-</ul>
+           </select>
+          <ul className={style.ul}>
+             {arrayTypes.map((ele) => {
+              const nombre = dataType.filter((el) => el.id === Number(ele));
+               return <li key={nombre[0].id}>{nombre[0].type}</li>;
+             })}
+           </ul>
         </div>
+
 
         <button className={style.boton} type="submit">
           Submit

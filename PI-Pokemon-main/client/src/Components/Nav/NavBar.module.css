@@ -30,3 +30,13 @@
     background-color: #555;
   }
   
+  @media screen and (max-width: 600px) {
+    .navList {
+      flex-direction: column;
+      gap: 5px;
+    }
+  
+    .navItem {
+      display: block;
+    }
+  }
