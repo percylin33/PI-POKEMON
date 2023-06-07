@@ -2,10 +2,10 @@ const axios = require("axios");
 const { Pokemon, Tipo } = require("../db.js");
 
 const info = async () => {
-  const api = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=30");
+  const api = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=200");
   const data = api.data;
 
-  const bd = await Pokemon.findAll({
+  const bdPromise = Pokemon.findAll({
     include: {
       model: Tipo,
       attributes: ["type"],
@@ -14,10 +14,11 @@ const info = async () => {
       },
     },
   });
- 
+
+  const bd = await bdPromise;
+
   const bd2 = bd.map((ele) => {
     const tiposs = ele.tipos.map((el) => el.type);
-  
 
     return {
       id: ele.id,
@@ -30,37 +31,36 @@ const info = async () => {
 
   let base = [...bd2, ...data.results];
 
-  let pokemonInfo = [];
-  for (let i = 0; i < base.length; i++) {
-    if (!base[i]) return pokemonInfo;
-    if (base[i].url) {
-      const pokemon = await axios.get(base[i].url);
-      const info = pokemon.data;
+  const pokemonInfo = await Promise.all(base.map(async (pokemon) => {
+    if (!pokemon) return null;
+    if (pokemon.url) {
+      const apiPromise = axios.get(pokemon.url);
+      const apiResponse = await apiPromise;
+      const info = apiResponse.data;
 
-      pokemonInfo.push({
+      return {
         id: info.id,
         name: info.name,
         type: info.types.map((t) => t.type.name),
         img: info.sprites.other.dream_world.front_default,
-        
-      });
+        fuerza: info.stats[1].base_stat,
+      };
     } else {
-      pokemonInfo.push({
-        id: base[i].id,
-        idPoke: base[i].idPoke,
-        name: base[i].name,
-        type: base[i].type,
-        img: base[i].img,
-        
-      });
+      return {
+        id: pokemon.id,
+        idPoke: pokemon.idPoke,
+        name: pokemon.name,
+        type: pokemon.type,
+        img: pokemon.img,
+        fuerza: pokemon.fuerza,
+      };
     }
-    
-  }
+  }));
 
   const poke = await Pokemon.findAll({ include: Tipo });
   pokemonInfo.push({ ...poke });
 
-  return pokemonInfo;
+  return pokemonInfo.filter((pokemon) => pokemon !== null);
 };
 
 const forName = async (name) => {
@@ -135,7 +135,7 @@ const forId = async (id) => {
       id: db.idPoke,
       name: db.name,
       type: db.tipos.map((t) => t.name),
-      img: "https://media.giphy.com/media/DRfu7BT8ZK1uo/giphy.gif",
+      img: db.imagen,
       vida: db.vida,
       fuerza: db.fuerza,
       defensa: db.defensa,

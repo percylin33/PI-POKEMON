@@ -16,8 +16,7 @@ import { Link } from "react-router-dom";
 const HomePage = () => {
    const dispatch = useDispatch();
    const pokemons = useSelector((state) => state.filterPoke);
-   const filters = useSelector((state) => state.filters);
-   const sorting = useSelector((state) => state.sorting);
+  
    console.log(pokemons);
    useEffect(() => {
      dispatch(getPokemons());
@@ -53,7 +52,7 @@ const HomePage = () => {
     </div> 
 
     </div>
-      <CarsContainer pokemons={currentCars} filters={filters} sorting={sorting} />
+      <CarsContainer pokemons={currentCars} />
     <br />
        <Pagination   
         currentPage={currentPage}

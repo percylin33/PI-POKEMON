@@ -2,7 +2,10 @@ import video from "../../access/pokemon-in-the-wild.mp4";
 import style from "./LandingPage.module.css"
 import { useHistory } from 'react-router-dom';
 
+
 function LandingPage() {
+  
+
     const history = useHistory();
     return(
         <div className={style.container}>

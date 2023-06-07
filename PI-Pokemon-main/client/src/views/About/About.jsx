@@ -15,11 +15,11 @@ const About = () => {
            <div className={style.pCon} >
               <img className={style.per} src={percy} alt="img de percy" />
               <p className={style.ordenado}>
-  Estoy lleno de alegría y emoción al completar este proyecto con éxito.{"\n"}
-  Quiero expresar mi más profundo agradecimiento al equipo de Henry por su incansable trabajo, dedicación y compromiso hacia los alumnos.{"\n"}
-  Durante todo este proceso de aprendizaje, hemos explorado y utilizado diversas tecnologías y herramientas, como React, Redux, JavaScript, NodeJS, CSS, Github y PostgreSQL, que nos han llevado a crecer y convertirnos en desarrolladores full-stack.{"\n"}
-  Ha sido un privilegio ser parte de la maravillosa comunidad que se ha formado en Henry.{"\n"}
-  ¡Gracias por su apoyo constante y por brindarnos una experiencia de aprendizaje inigualable!
+              I am overjoyed and excited to successfully complete this project.{"\n"}
+  I want to express my deepest gratitude to the Henry team for their tireless work, dedication and commitment to the students.{"\n"}
+  Throughout this learning process, we have explored and used various technologies and tools, such as React, Redux, JavaScript, NodeJS, CSS, Github and PostgreSQL, which have led us to grow and become full-stack developers.{"\n" }
+  It has been a privilege to be a part of the wonderful community that has grown at Henry.{"\n"}
+  Thank you for your continued support and for providing us with an unmatched learning experience!
 </p>
               <div className={style.i}>
                   <img className={style.img} src={react} alt="imagen de react" />

@@ -27,7 +27,8 @@ server.use((req, res, next) => {
 
 
 server.get("/", (req, res) => {
-  res.json({ info: "Pagina cargada cpn exito" });
+  
+  res.json({ info: "Pagina cargada con exito" });
 });
 server.use("/", routes);
 
