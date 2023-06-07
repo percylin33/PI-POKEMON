@@ -102,40 +102,37 @@ const DetailPage = () => {
   
   return (
 <div className={styles.container}>
-  <Link to={"/home"}>
-    <img className={styles.imAtras} src={atras} alt="boton atras" />
-  </Link>
   <div className={styles.detailConte}>
     <div className={styles.display}>
-      <img
-        className={styles.pokebola}
-        src={pokebola}
-        alt="Pokebola"
-      />
+      <Link to={"/home"}>
+        <img className={styles.imAtras} src={atras} alt="boton atras" />
+      </Link>
+      <img className={styles.pokebola} src={pokebola} alt="Pokebola" />
     </div>
-    <div className={styles.rod}>
-      <img className={styles.poke} src={detailPoke.img} alt="imgPoke" />
-      <button className={styles.lastOne} id="resultado" onClick={handleClick}>
-        DESCRIPTION  <img className={styles.altavoz} src={altavoz} alt="altavoz" />
-      </button>
+    <div className={styles.contentWrapper}>
+      <div className={styles.rod}>
+        <img className={styles.poke} src={detailPoke.img} alt="imgPoke" />
+      </div>
+      <div className={styles.secondD}>
+        <div className={styles.description}>
+          <button className={styles.lastOne} id="resultado" onClick={handleClick}>
+            DESCRIPTION <img className={styles.altavoz} src={altavoz} alt="altavoz" />
+          </button>
+        </div>
+        <div className={styles.info}>
+          <p><strong>Id:</strong> {detailPoke.id} </p>
+          <p><strong>Name:</strong> {detailPoke.name}</p>
+          <p> <img className={styles.icono} src={vida} alt="vida" /> <strong> Life:</strong> {detailPoke.vida}</p>
+          <p> <img className={styles.icono} src={ataque} alt="ataque" /><strong> Attack:</strong> {detailPoke.fuerza}</p>
+          <p> <img className={styles.icono} src={defenza} alt="defenza" /><strong> Defending:</strong> {detailPoke.defensa}</p>
+          <p> <img className={styles.icono} src={velocidad} alt="velocidad" /><strong> speed:</strong> {detailPoke.velocidad}</p>
+          <p> <img className={styles.icono} src={altura} alt="altura" /><strong> height:</strong> {detailPoke.height}</p>
+          <p> <img className={styles.icono} src={peso} alt="peso" /><strong> weight:</strong> {detailPoke.weight}</p>
+          <p><strong>Types:</strong> {detailPoke.type && detailPoke.type.join(", ")}</p>
+        </div>
+      </div>
     </div>
-    
-    <div className={styles.secondD}>
-      <p><strong>Id:</strong> {detailPoke.id} </p>
-      <p><strong>Name:</strong> {detailPoke.name}</p>
-      <p> <img className={styles.icono} src={vida} alt="vida" /> <strong> Life:</strong> {detailPoke.vida}</p>
-      <p> <img className={styles.icono} src={ataque} alt="ataque" /><strong> Attack:</strong> {detailPoke.fuerza}</p>
-      <p> <img className={styles.icono} src={defenza} alt="defenza" /><strong> Defending:</strong> {detailPoke.defensa}</p>
-      <p> <img className={styles.icono} src={velocidad} alt="velocidad" /><strong> speed:</strong> {detailPoke.velocidad}</p>
-      <p> <img className={styles.icono} src={altura} alt="altura" /><strong> height:</strong> {detailPoke.height}</p>
-      <p> <img className={styles.icono} src={peso} alt="peso" /><strong> weight:</strong> {detailPoke.weight}</p>
-      <p><strong>Types:</strong> {detailPoke.type && detailPoke.type.join(", ")}</p>      
-      
-     
-    </div>
-
   </div>
-
 </div>
   );
 };

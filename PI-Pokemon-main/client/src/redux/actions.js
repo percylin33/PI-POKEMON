@@ -9,14 +9,14 @@
     export const GET_TYPES = "GET_TYPES"
     export const GET_ORIGIN = "GET_ORIGIN"
 
-    const url= "http://localhost:3001/";
+   
 
     export  const getPokemons = () => {
         return async function (dispatch) {
-            const serverPoke  = await axios.get(`${url}pokemons`);
+            const serverPoke  = await axios.get(`/pokemons`);
 
             const pokemons = serverPoke.data
-            console.log(pokemons);
+            
             dispatch({
                 type: GET_POKEMONS, payload: pokemons
             })
@@ -25,7 +25,7 @@
     export const getPokemon = (id) =>{
         
         return async function (dispatch) {
-            const serverPoke = await axios.get(`${url}pokemons/${id}`);
+            const serverPoke = await axios.get(`/pokemons/${id}`);
             const pokemon = serverPoke.data;
     
             dispatch({
@@ -38,7 +38,7 @@
 
         return async (dispatch) => {
             try {
-                const response = await axios.get(`${url}pokemons?name=${name}`);
+                const response = await axios.get(`/pokemons?name=${name}`);
                 const data = response.data;
                 
                return dispatch({ type: ADD_CHARACTER, payload: data });
@@ -68,7 +68,7 @@
     export const getTypes = ()=>{
         return async(dispatch)=>{
             try {
-               const {data} = await axios.get(`${url}types`) 
+               const {data} = await axios.get(`/types`) 
                return dispatch({
                 type: GET_TYPES,
                 payload: data,

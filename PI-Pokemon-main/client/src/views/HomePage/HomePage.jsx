@@ -17,7 +17,6 @@ const HomePage = () => {
    const dispatch = useDispatch();
    const pokemons = useSelector((state) => state.filterPoke);
   
-   console.log(pokemons);
    useEffect(() => {
      dispatch(getPokemons());
    }, []);

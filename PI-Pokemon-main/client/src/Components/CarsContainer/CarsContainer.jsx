@@ -10,12 +10,9 @@ const CarsContainer = ({pokemons}) => {
     useEffect(()=> {
     setTimeout(() => {
       setCargando(false);
-    }, 3000);
+    }, 2000);
   },[])
  
-  
-
-
   return (
     <div >
        <div>

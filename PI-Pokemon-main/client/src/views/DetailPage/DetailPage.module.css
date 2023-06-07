@@ -1,8 +1,5 @@
 .imAtras {
-  width: 8rem;
-  position: fixed;
-  top: 6rem;
-  left: 3rem;
+  width: 5rem;
 }
 
 .container {
@@ -23,11 +20,12 @@
   margin-top: 20px;
   margin-bottom: 20px;
   background-color: darkcyan;
+  min-height: auto;
 }
 
 .display {
-  margin-top: 250px;
-  height: 200px;
+  margin-top: 30px;
+  max-height: 300px;
   width: 352px;
   margin-right: 60px;
 }
@@ -44,18 +42,18 @@
 
 .pokebola {
   width: 250px;
-  margin-left: 80px;
+  margin-left: 100px;
 }
 
 .rod {
-  height: 90px;
+  max-height: 90px;
   width: 200px;
   margin-right: 180px;
   margin-top: 20px;
 }
 
 .poke {
-  width: 300px;
+  max-width: 300px;
 }
 
 .lastOne {
@@ -136,8 +134,22 @@ dt {
   margin: 15px;
 }
 
+.contentWrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.description {
+  flex: 1 1 100%;
+}
+
+.info {
+  flex: 1 1 100%;
+  margin-top: 20px;
+}
+
 /* Estilos para pantallas pequeñas */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 970px) {
   .imAtras {
     width: 4rem;
     top: 3rem;
@@ -155,7 +167,7 @@ dt {
 
   .display {
     margin-top: 1rem;
-    height: 150px;
+    max-height: 150px;
     width: 100%;
     margin-right: 0;
   }
@@ -171,7 +183,7 @@ dt {
   }
 
   .poke {
-    width: 200px;
+    max-width: 200px;
   }
 
   .lastOne {

@@ -2,7 +2,7 @@ const axios = require("axios");
 const { Pokemon, Tipo } = require("../db.js");
 
 const info = async () => {
-  const api = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=200");
+  const api = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=20");
   const data = api.data;
 
   const bdPromise = Pokemon.findAll({
@@ -26,6 +26,7 @@ const info = async () => {
       name: ele.name,
       type: tiposs,
       img: ele.imagen,
+      fuerza:ele.fuerza
     };
   });
 
@@ -56,6 +57,7 @@ const info = async () => {
       };
     }
   }));
+  
 
   const poke = await Pokemon.findAll({ include: Tipo });
   pokemonInfo.push({ ...poke });
@@ -134,7 +136,7 @@ const forId = async (id) => {
     const pokemonDb = {
       id: db.idPoke,
       name: db.name,
-      type: db.tipos.map((t) => t.name),
+      type: db.tipos.map((t) => t.type),
       img: db.imagen,
       vida: db.vida,
       fuerza: db.fuerza,
