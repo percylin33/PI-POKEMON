@@ -8,6 +8,7 @@
     export const SORT_POKEMON ="SORT_POKEMON";
     export const GET_TYPES = "GET_TYPES"
     export const GET_ORIGIN = "GET_ORIGIN"
+    export const CREATE_POKE = "CREATE_POKE"
 
    
 
@@ -87,5 +88,22 @@
             payload: option
         }
   
+    }
+
+    export const createPoke = (payload) => {
+        return async function (dispatch) {
+            try {
+                let create = await axios.post("/pokemons", payload)
+                return dispatch ( {
+                    type:CREATE_POKE,
+                    payload: create.data
+                })
+                
+            } catch (error) {
+                console.log(err);
+                
+            }
+            
+        }
     }
 

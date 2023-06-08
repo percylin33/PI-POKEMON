@@ -11,13 +11,22 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    z-index: -1;
+   
     
   }
   .errorInput {
     border: 1px solid red;
   }
   
+  .bot {
+    background-color: #e9091b; 
+    color: #000000; /* Negro */
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+  }
   .form {
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 10px;

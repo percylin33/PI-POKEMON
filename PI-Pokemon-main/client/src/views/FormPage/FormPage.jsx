@@ -1,13 +1,15 @@
-import axios from "axios";
+
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTypes } from "../../redux/actions";
+import { getTypes, createPoke } from "../../redux/actions";
 import style from "./FormPage.module.css";
+import { validateForm } from "./formValidation";
 
 function FormPage() {
   const dispatch = useDispatch();
   const dataType = useSelector((state) => state.types);
-  const url = "http://localhost:3001/";
+
+ 
 
   const [arrayTypes, setArrayTypes] = useState([]);
 
@@ -49,70 +51,45 @@ function FormPage() {
     tipos: "",
   });
 
-  const validateName = (name) => {
-    if (typeof name !== "string" || name.trim() === "" || !isNaN(parseFloat(name))) {
-      return "Name is required";
-    }
-    return "";
-  };
-
-  const validateNumericField = (value) => {
-    value = Number(value);
-    
-    if (typeof value !== "number" || isNaN(value) || value <= 0) {
-      return "Please enter a valid number";
-    }
-    return "";
-  };
-
   const validate = (form) => {
-    const { name, imagen, vida, fuerza, defensa, velocidad, altura, peso } = form;
-    const nameError = validateName(name);
-    const imagenError = validateName(imagen);
-    const vidaError = validateNumericField(vida);
-    const fuerzaError = validateNumericField(fuerza);
-    const defensaError = validateNumericField(defensa);
-    const velocidadError = validateNumericField(velocidad);
-    const alturaError = validateNumericField(altura);
-    const pesoError = validateNumericField(peso);
-
-    setErrors({
-      ...errors,
-      name: nameError,
-      imagen: imagenError,
-      vida: vidaError,
-      fuerza: fuerzaError,
-      defensa: defensaError,
-      velocidad: velocidadError,
-      altura: alturaError,
-      peso: pesoError,
-    });
+    const errors = validateForm(form);
+    setErrors(errors);
   };
 
   const changeHandler = (event) => {
     const { name, value } = event.target;
     setForm({ ...form, [name]: value });
     validate({ ...form, [name]: value });
+    setErrors({ ...errors, [name]: "" }); // Restablecer el error del campo actual
   };
+
+  // const changeHandler = (event) => {
+  //   const { name, value } = event.target;
+  //   setForm({ ...form, [name]: value });
+  //   validate({ ...form, [name]: value });
+  // };
 
   const submitHandler = (event) => {
     event.preventDefault();
-    if (Object.values(errors).every((error) => error === "")) {
-      axios
-        .post(`${url}pokemons`, form)
+    const formErrors = validateForm(form);
+  
+    if (Object.values(formErrors).every((error) => error === "")) {
+      dispatch(createPoke(form))
         .then((res) => {
-          return alert(res.data.info);
+          alert(res.payload.info);
         })
-        .catch((err) => alert(err));
+        .catch((err) => {
+          alert(err);
+        });
     } else {
       alert("Los valores ingresados no son válidos");
+      setErrors(formErrors);
     }
   };
 
   const getInputClassName = (fieldName) => {
     return errors[fieldName] ? `${style.impu} ${style.errorInput}` : style.impu;
   };
-
  
 
   return (
@@ -129,6 +106,7 @@ function FormPage() {
             name="name"
             placeholder="Has to be string"
           />
+          {!errors.name ? null : <p className={style.err}>{errors.name}</p>}
           
         </div>
 
@@ -142,6 +120,7 @@ function FormPage() {
             name="imagen"
             placeholder="Has to be string"
           />
+          {!errors.imagen ? null : <p className={style.err}>{errors.imagen}</p>}
           
         </div>
 
@@ -155,7 +134,7 @@ function FormPage() {
             name="vida"
             placeholder="It has to be number"
           />
-          
+          {!errors.vida ? null : <p className={style.err}>{errors.vida}</p>}
           
         </div>
 
@@ -169,7 +148,7 @@ function FormPage() {
             name="fuerza"
             placeholder="It has to be number"
           />
-          
+          {!errors.fuerza ? null : <p className={style.err}>{errors.fuerza}</p>}
           
         </div>
 
@@ -183,7 +162,7 @@ function FormPage() {
             name="defensa"
             placeholder="It has to be number"
           />
-          
+          {!errors.defensa ? null : <p className={style.err}>{errors.defensa}</p>}
           
         </div>
 
@@ -197,7 +176,7 @@ function FormPage() {
             name="velocidad"
             placeholder="It has to be number"
           />
-         
+          {!errors.velocidad ? null : <p className={style.err}>{errors.velocidad}</p>}
          
         </div>
 
@@ -211,7 +190,7 @@ function FormPage() {
             name="altura"
             placeholder="It has to be number"
           />
-          
+          {!errors.altura ? null : <p className={style.err}>{errors.altura}</p>}
           
         </div>
 
@@ -225,7 +204,7 @@ function FormPage() {
             name="peso"
             placeholder="It has to be number"
           />
-          
+          {!errors.peso ? null : <p className={style.err}>{errors.peso}</p>}
           
         </div>
 
@@ -242,11 +221,12 @@ function FormPage() {
                </option>
             ))}
            </select>
+            <button className={style.bot} type="button" onClick={() => setArrayTypes([])}>x</button>
           <ul className={style.ul}>
              {arrayTypes.map((ele) => {
-              const nombre = dataType.filter((el) => el.id === Number(ele));
+               const nombre = dataType.filter((el) => el.id === Number(ele));
                return <li key={nombre[0].id}>{nombre[0].type}</li>;
-             })}
+              })}
            </ul>
         </div>
 

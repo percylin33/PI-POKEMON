@@ -6,6 +6,7 @@ import {
   SORT_POKEMON,
   GET_TYPES,
   GET_ORIGIN,
+  CREATE_POKE,
 } from "./actions";
 
 const initialState = {
@@ -49,7 +50,6 @@ const rootReducer = (state = initialState, action) => {
         (e) => e.name !== undefined && e.fuerza !== undefined
       );
       const info = filData.sort((a, b) => {
-        console.log(a, b);
         if (action.payload === "ascending") {
           return a.name.localeCompare(b.name);
         }
@@ -78,7 +78,7 @@ const rootReducer = (state = initialState, action) => {
     case GET_ORIGIN:
       const orData = state.pokemons;
       let orde = [];
-console.log(orData);
+
       if (action.payload === "1") {
         orde = orData.filter((e) => {
           // console.log(e.id);
@@ -99,11 +99,17 @@ console.log(orData);
        orde = state.pokemons;
       }
 
-      console.log(orde);
+      
       return {
         ...state,
         filterPoke: orde,
       };
+      case CREATE_POKE:
+        return{
+          ...state
+        }
+
+
 
     default:
       return { ...state };

@@ -9,7 +9,7 @@ function LandingPage() {
     const history = useHistory();
     return(
         <div className={style.container}>
-            <video className="video-background" autoPlay muted loop>
+            <video className={style.videoBackground} autoPlay muted loop>
           <source src={video} type="video/mp4" />
    
   </video>

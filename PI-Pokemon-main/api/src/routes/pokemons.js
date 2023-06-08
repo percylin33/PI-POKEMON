@@ -43,7 +43,8 @@ router.post("/", async (req, res) => {
     return res.json({ info: "Alguno de los argumentos no es un numero" });
 
   if (!name || !vida || !fuerza || !defensa || !velocidad ) return res.json({ info: "Campos obligatorios faltante " });
-  if (name.length < 3  ) return res.json({ info: "Campos name nesesita mas de tres caracteres " });
+  if (name.length <= 3 ) return res.json({ info: "Campos name nesesita mas de tres caracteres " });
+  if ( name.length >= 10 ) return res.json({ info: "Campos name nesesita mas de tres caracteres " });
   
 
   const existe = await Pokemon.findOne({ where: { name: name } });
