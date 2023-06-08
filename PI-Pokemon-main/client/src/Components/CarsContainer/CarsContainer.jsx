@@ -14,7 +14,6 @@ const CarsContainer = ({pokemons}) => {
   },[])
  
   return (
-    <div >
        <div>
           {
             cargando?(
@@ -42,10 +41,6 @@ const CarsContainer = ({pokemons}) => {
 
        </div>
           
-      
- 
-
-    </div>
   );
 };
 

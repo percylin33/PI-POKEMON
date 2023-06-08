@@ -1,4 +1,3 @@
-import React from "react";
 import style from "./Pagination.module.css";
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
@@ -10,7 +9,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
           className={index + 1 === currentPage ? style.activePage : style.page}
           onClick={() => onPageChange(index + 1)}
         >
-          {index + 1}
+          {index +1}
         </button>
       ))}
     </div>

@@ -14,24 +14,36 @@
 
     export  const getPokemons = () => {
         return async function (dispatch) {
-            const serverPoke  = await axios.get(`/pokemons`);
-
-            const pokemons = serverPoke.data
-            
-            dispatch({
-                type: GET_POKEMONS, payload: pokemons
-            })
+            try {
+                const serverPoke  = await axios.get(`/pokemons`);
+    
+                const pokemons = serverPoke.data
+                
+                dispatch({
+                    type: GET_POKEMONS, payload: pokemons
+                })
+                
+            } catch (error) {
+                alert("Error al obtener los pokemones");
+            }
         }
     }
+    
     export const getPokemon = (id) =>{
         
         return async function (dispatch) {
-            const serverPoke = await axios.get(`/pokemons/${id}`);
-            const pokemon = serverPoke.data;
+            try {
+                
+                const serverPoke = await axios.get(`/pokemons/${id}`);
+                const pokemon = serverPoke.data;
     
-            dispatch({
-                type: GET_POKEMON, payload: pokemon
-                })
+                dispatch({
+                     type: GET_POKEMON, payload: pokemon
+                     })
+            } catch (error) {
+                alert("Error al obtener el pokemon");
+            }
+            
         }
     }
 
@@ -75,7 +87,7 @@
                 payload: data,
                })
             } catch (error) {
-                console.log(error.message);
+                alert("Error al obtener los tipos");
                 
             }
         }
@@ -100,7 +112,7 @@
                 })
                 
             } catch (error) {
-                console.log(err);
+                alert("Error al crear el pokemon");
                 
             }
             

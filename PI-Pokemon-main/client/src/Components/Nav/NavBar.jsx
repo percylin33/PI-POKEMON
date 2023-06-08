@@ -4,7 +4,7 @@ import SearchBar from "../SearchBar/SearchBar";
 
 const NavBar = () => {
     return(
-        <div>
+       
         <nav className={style.navContainer}>
         <ul className={style.navList}>
           <li className={style.navItem}>
@@ -19,7 +19,7 @@ const NavBar = () => {
         </ul>
         <SearchBar />
       </nav>
-      </div>
+     
 
     )
 }

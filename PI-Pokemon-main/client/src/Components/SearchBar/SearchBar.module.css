@@ -18,18 +18,7 @@
   .bt:hover {
     background-color: #0056b3;
   }
-/* 
-  @media screen and (max-width: 600px) {
-    .in {
-      font-size: 14px;
-    }
-    
-    .bt {
-      font-size: 14px;
-    }
-  } */
-  
-  /* Estilos para pantallas de hasta 400px */
+
   @media screen and (max-width: 450px) {
     .in {
       font-size: 5px;

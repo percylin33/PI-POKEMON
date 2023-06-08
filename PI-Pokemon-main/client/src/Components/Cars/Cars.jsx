@@ -8,8 +8,8 @@ const Cars = (props) => {
 
            <p className={style.carTitle}>{props.name}</p>
             <Link to={`/detail/${props.id}`}>
-           <img className={style.ima} src={props.image} alt= {`imagen de ${props.name} `}/>
-          </Link> 
+              <img className={style.ima} src={props.image} alt= {`imagen de ${props.name} `}/>
+            </Link> 
            <p className={style.carDescription} >
                Types: {props.types}
            </p>

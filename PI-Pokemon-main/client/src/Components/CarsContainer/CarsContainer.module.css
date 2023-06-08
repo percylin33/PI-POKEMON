@@ -3,7 +3,6 @@
     display: flex;
     justify-content: center;
     flex-direction: row;
-    border-radius: 15px;
     flex-wrap: wrap;
     gap: 1em;
     

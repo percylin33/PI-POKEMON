@@ -1,4 +1,4 @@
- import React, { useEffect, useState } from "react";
+ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchPoke } from "../../redux/actions";
 import style from "./SearchBar.module.css";
