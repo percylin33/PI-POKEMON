@@ -10,7 +10,7 @@ const server = express();
 
 server.name = "API";
 
-server.use(express.urlencoded());
+server.use(express.urlencoded({ extended: true }));
 server.use(express.json());
 server.use(cookieParser());
 server.use(morgan("dev"));
