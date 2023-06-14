@@ -7,17 +7,23 @@ const router = Router();
 router.get("/", async (req, res) => {
   let { name } = req.query;
   let pokemonInfo = [];
-  if (name) {
-    name = name.toLowerCase();
-    pokemonInfo = await forName(name);
 
-    return res.json(pokemonInfo);
+  try {
+    
+    if (name) {
+      name = name.toLowerCase();
+      pokemonInfo = await forName(name);
+  
+      return res.json(pokemonInfo);
+    }
+    
+    pokemonInfo = await info();
+    if (!pokemonInfo.length) return res.json({ info: "No hay mas registros" });
+  
+    res.json(pokemonInfo);
+  } catch (error) {
+      return res.status(500).send(error)
   }
-
-  pokemonInfo = await info();
-  if (!pokemonInfo.length) return res.json({ info: "No hay mas registros" });
-
-  res.json(pokemonInfo);
 });
 
 router.get("/:id", async (req, res) => {
@@ -44,7 +50,7 @@ router.post("/", async (req, res) => {
 
   if (!name || !vida || !fuerza || !defensa || !velocidad ) return res.json({ info: "Campos obligatorios faltante " });
   if (name.length <= 3 ) return res.json({ info: "Campos name nesesita mas de tres caracteres " });
-  if ( name.length >= 10 ) return res.json({ info: "Campos name nesesita mas de tres caracteres " });
+  if ( name.length >= 10 ) return res.status(404).json({ info: "Campos name nesesita menos de 9 caracteres " });
   
 
   const existe = await Pokemon.findOne({ where: { name: name } });

@@ -7,10 +7,11 @@
     position: absolute;
     width: 100%;
     min-height: 100vh;
-    background-image: url('../../access/detective.jpg');
+    background-color: cadetblue;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+   
    
     
   }

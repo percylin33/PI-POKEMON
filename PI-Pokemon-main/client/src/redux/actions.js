@@ -24,7 +24,7 @@
                 })
                 
             } catch (error) {
-                alert("Error al obtener los pokemones");
+                console.log("Error al obtener los pokemones");  
             }
         }
     }

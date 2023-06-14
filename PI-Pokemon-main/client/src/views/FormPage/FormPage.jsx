@@ -58,22 +58,17 @@ function FormPage() {
 
   const changeHandler = (event) => {
     const { name, value } = event.target;
-    setForm({ ...form, [name]: value });
+    setForm({ ...form, [name]: value });//llena el form input por input 
     validate({ ...form, [name]: value });
     setErrors({ ...errors, [name]: "" }); // Restablecer el error del campo actual
   };
 
-  // const changeHandler = (event) => {
-  //   const { name, value } = event.target;
-  //   setForm({ ...form, [name]: value });
-  //   validate({ ...form, [name]: value });
-  // };
 
   const submitHandler = (event) => {
     event.preventDefault();
     const formErrors = validateForm(form);
   
-    if (Object.values(formErrors).every((error) => error === "")) {
+    if (Object.values(formErrors).every((error) => error === "")) {  // verifica si todos los valores del object que esten ""
       dispatch(createPoke(form))
         .then((res) => {
           alert(res.payload.info);

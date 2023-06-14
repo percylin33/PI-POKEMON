@@ -12,7 +12,7 @@ const Filtros = () => {
     useEffect(()=>{
 
       dispatch(getTypes())
-    },[])
+    },[dispatch])
 
  
 
