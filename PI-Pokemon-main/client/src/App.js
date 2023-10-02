@@ -3,7 +3,7 @@ import {LandingPage, HomePage, DetailPage, FormPage, About }   from "./views";
 import NavBar from "./Components/Nav/NavBar";
 import {Route, useLocation} from "react-router-dom";
 import axios from 'axios';
-axios.defaults.baseURL = "https://pi-pokemon-production-c990.up.railway.app/";
+axios.defaults.baseURL = "http://localhost:3001/" ;
 
 
 function App() {
