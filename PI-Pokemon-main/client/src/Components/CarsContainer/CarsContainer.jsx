@@ -6,15 +6,10 @@ import carga from "../../access/carga.gif";
 
 const CarsContainer = ({pokemons}) => {
   const [cargando, setCargando] = useState(true);
-  console.log(pokemons);
     useEffect(()=> {
-      console.log("efec" + pokemons);
-      if (pokemons) {
-        setTimeout(() => {
+      if (pokemons && pokemons.length > 0) {
         setCargando(false);
-        }, 500);
       }
-    
   },[pokemons])
  
   return (
